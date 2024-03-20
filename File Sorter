@@ -1,0 +1,19 @@
+import os
+import shutil
+
+path = r"C:/Users/devma/OneDrive/Desktop/Python_Tutorial/"
+
+folders = ["Image file", "Excel file"]
+
+# Creating folders if they don't exist
+for folder in folders:
+    if not os.path.exists(path + folder):
+        os.makedirs(path + folder)
+
+# Moving files to respective folders based on extensions
+filename=os.listdir(path)
+for file in filename:
+    if ".png" in file and not os.path.exists(path+"Image file/"+file):
+        shutil.move(path+file,path+"Image file/"+file)
+    elif ".xlsx" in file and not os.path.exists(path+"Excel file/"+file):
+        shutil.move(path+file,path+"Excel file/"+file)
